@@ -1,0 +1,18 @@
+create database if not exists dos_siete;
+use dos_siete;
+
+create table if not exists encargado(
+	dni varchar(30) primary key,
+    nombre varchar(30) not null,
+    apellido varchar(30) not null,
+    fecha_nac date not null
+);
+
+create table if not exists tienda(
+	cod_tienda int primary key,
+    nombre varchar(30),
+    direccion varchar(30),
+    aforo int not null,
+    dni_encargado varchar(30) unique not null,
+    foreign key (dni_encargado) references encargado(dni)
+);
