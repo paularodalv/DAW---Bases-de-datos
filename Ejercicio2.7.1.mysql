@@ -1,0 +1,17 @@
+create database if not exists dos_siete;
+use dos_siete;
+
+create table if not exists paises(
+	cod_p int primary key,
+    extension int,
+    nombre varchar(30) not null,
+    continente varchar(30)
+);
+create table if not exists capitales(
+	cod_c int primary key,
+    nombre varchar(30) not null,
+    latitud varchar(30),
+    n_habitantes int not null,
+    cod_p int unique not null,
+    foreign key (cod_p) references paises(cod_p)
+);
