@@ -1,0 +1,25 @@
+create database if not exists dos_siete;
+use dos_siete;
+
+create table if not exists dominioFiscal(
+	direccion varchar(30),
+    ciudad varchar(30),
+    pais varchar(30),
+    cp int,
+    primary key (direccion, ciudad, pais, cp)
+);
+
+create table if not exists empresa(
+	nif int primary key,
+    nombre varchar(30) not null,
+    nTrabajadores int not null,
+    fecha_creacion date not null,
+    direccionDFiscal varchar(30) unique not null,
+    ciudadDFiscal varchar(30) not null unique,
+    paisDFiscal varchar(30) not null unique,
+    cpDFiscal varchar(30) not null unique,
+    foreign key (direccionDFiscal) references dominioFiscal(direccion),
+    foreign key (ciudadDFiscal) references dominioFiscal(ciudad),
+    foreign key (paisDFiscal) references dominioFiscal(pais),
+    foreign key (cpDFiscal) references dominioFiscal(cp)
+);
