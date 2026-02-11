@@ -1,0 +1,17 @@
+create database if not exists dos_siete;
+use dos_siete;
+
+create table if not exists persona(
+	dni varchar(30) primary key,
+    nombre varchar(30) not null,
+    apellido varchar(30) not null,
+    fecha_nac date not null
+);
+
+create table if not exists matrimonio(
+	cod_matrimonio int primary key,
+    dni_persona varchar(30) not null unique,
+    dni_conyuge varchar(30) not null unique,
+    foreign key (dni_persona) references persona(dni),
+    foreign key (dni_conyuge) references persona(dni)
+);
