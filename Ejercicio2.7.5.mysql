@@ -1,0 +1,19 @@
+create database if not exists dos_siete;
+use dos_siete;
+
+create table if not exists automovil(
+	matricula varchar(30) primary key,
+    marca varchar(30) not null,
+    modelo varchar(30) not null,
+    fecha_fabricacion date not null
+);
+
+create table if not exists estudiante(
+	cod_estudiante int primary key,
+    dni varchar(30) not null unique,
+    nombre varchar(30) not null,
+    apellido varchar(30) not null,
+    fecha_nac date not null,
+    matricula_coche varchar(30) not null unique,
+    foreign key (matricula_coche) references automovil(matricula)
+);
