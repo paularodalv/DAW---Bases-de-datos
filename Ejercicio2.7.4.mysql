@@ -1,0 +1,15 @@
+create database if not exists dos_siete;
+use dos_siete;
+
+create table if not exists habitaciones(
+	num_hab int primary key,
+    planta int not null
+);
+
+create table if not exists cliente(
+	dni int primary key,
+    nombre varchar(30),
+    telefono int,
+    num_hab int unique not null,
+    foreign key (num_hab) references habitaciones(num_hab)
+);
